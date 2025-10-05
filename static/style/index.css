@@ -1,0 +1,344 @@
+/* General Body and HTML Styling */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    color: #333; /* Default text color */
+}
+
+body {
+    background: linear-gradient(to bottom right, #f8f8fa, #e0e0f0); /* Light gradient background */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.logo{
+    width: 450px;
+}
+/* Container for consistent width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Header Styling */
+.header {
+    background-color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative; /* For z-index if needed */
+    z-index: 100; /* Ensure header is on top */
+}
+
+.header .container {
+    justify-content: space-between; /* Space out logo, nav, search */
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Navigation Bar Styling */
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Space between nav items */
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px; /* Space for underline effect */
+}
+
+.navbar a:hover {
+    color: #007bff; /* Example hover color */
+}
+
+.navbar a.active {
+    color: #007bff; /* Active link color */
+    font-weight: 600;
+}
+
+.navbar a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff; /* Underline for active link */
+}
+
+
+.search-icon {
+    font-size: 20px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.search-icon:hover {
+    color: #007bff;
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1; /* Allows it to take up available space */
+    position: relative;
+    overflow: hidden; /* Important for containing pseudo-elements */
+    padding: 80px 0; /* Add vertical padding */
+}
+
+.main-content .container {
+    display: flex;
+    flex-direction: row; /* Arrange sections horizontally */
+    align-items: center; /* Vertically align items */
+    gap: 50px; /* Space between text and illustration */
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative; /* Needed for z-index of content over shapes */
+    z-index: 1; /* Ensure content is above background shapes */
+}
+
+.about-us-section {
+    flex: 1; /* Takes up available space */
+    max-width: 55%; /* Adjust width as per image */
+    padding-right: 30px; /* Space before image if illustration is beside it */
+    margin-left: -90px;
+}
+
+.about-us-section h1 {
+    font-size: 4em; /* Adjust as needed */
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.about-us-section p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.learn-more-button {
+    display: inline-block;
+    background-color: #007bff; /* Button background color */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more-button:hover {
+    background-color: #0056b3; /* Darker on hover */
+}
+
+.illustration-section {
+    flex: 1; /* Takes up available space */
+    max-width: 45%; /* Adjust width as per image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.illustration-section img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below image */
+}
+
+/* Background Shapes (Pseudo-elements for blobs) */
+.main-content::before,
+.main-content::after {
+    content: '';
+    position: absolute;
+    z-index: 0; /* Behind content */
+    border-radius: 50%; /* For circular/blob shapes */
+    opacity: 0.8; /* Adjust transparency */
+}
+
+/* Top-right pinkish blob */
+.main-content::before {
+    top: -100px; /* Adjust position */
+    right: -150px; /* Adjust position */
+    width: 600px; /* Adjust size */
+    height: 600px; /* Adjust size */
+    background: linear-gradient(to bottom right, #ffb6c1, #ffa07a); /* Pink-orange gradient */
+    transform: rotate(30deg); /* Rotate to get the angled look */
+    filter: blur(80px); /* Soften the edges */
+}
+
+/* Bottom-left lighter blob (if desired, or adjust the top-right one) */
+.main-content::after {
+    bottom: -150px; /* Adjust position */
+    left: -100px; /* Adjust position */
+    width: 400px; /* Adjust size */
+    height: 400px; /* Adjust size */
+    background: linear-gradient(to top left, #a1c4fd, #c2e9fb); /* Light blue gradient */
+    transform: rotate(-45deg);
+    filter: blur(70px);
+}
+
+
+/* Footer Styling */
+.footer {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9em;
+    color: #888;
+    background-color: #f0f0f0; /* Light background for footer */
+    border-top: 1px solid #eee;
+}
+
+.footer img {
+    vertical-align: middle;
+    height: 20px; /* Adjust logo size */
+    margin-left: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .main-content .container {
+        flex-direction: column; /* Stack sections vertically on smaller screens */
+        text-align: center;
+    }
+
+    .about-us-section {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .about-us-section h1 {
+        font-size: 3em;
+    }
+
+    .illustration-section {
+        max-width: 80%; /* Adjust size of illustration */
+    }
+
+    .header .container {
+        flex-wrap: wrap; /* Allow header items to wrap */
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .search-icon {
+        order: -1; /* Move search icon to the start if needed */
+        margin-left: auto; /* Push to the right */
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 0;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .navbar a {
+        font-size: 14px;
+    }
+
+    .main-content {
+        padding: 40px 0;
+    }
+
+    .about-us-section h1 {
+        font-size: 2.5em;
+    }
+
+    .about-us-section p {
+        font-size: 1em;
+    }
+
+    .learn-more-button {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+
+    /* Adjust blob sizes and positions for smaller screens */
+    .main-content::before {
+        top: -50px;
+        right: -80px;
+        width: 400px;
+        height: 400px;
+        filter: blur(50px);
+    }
+
+    .main-content::after {
+        bottom: -80px;
+        left: -50px;
+        width: 250px;
+        height: 250px;
+        filter: blur(40px);
+    }
+}
+
+@media (max-width: 480px) {
+    .header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .search-icon {
+        margin: 10px 0;
+    }
+
+    .about-us-section h1 {
+        font-size: 2em;
+    }
+    .about-us-section p {
+        font-size: 0.9em;
+    }
+}
+
+
+#animationCanvas {
+    position: fixed;
+    top: 0;
+    width: 70%;
+    height: 100%;
+    display: block;
+    z-index: -1;
+}

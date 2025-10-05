@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style1.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="main-content">
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img class="logo" src="{{ url_for('static', filename='imgs/logo.png') }}" alt="Logo">
+                <p class="app-subtitle">Analyze the emotional tone behind your text</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- Input Card -->
+            <section class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h2 class="card-title">Text Analysis</h2>
+                </div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <label for="input-text" class="input-label">Enter text to analyze:</label>
+                        <textarea id="input-text" placeholder="Type or paste your text here..."></textarea>
+                    </div>
+                    <button id="analyze-btn" class="btn btn-primary">
+                        <i class="fas fa-search-plus btn-icon"></i>
+                        Analyze Sentiment
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Card -->
+            <section class="card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h2 class="card-title">Analysis Results</h2>
+                </div>
+                
+                <!-- Tabs Navigation -->
+                <div class="tabs">
+                    <div class="tab active" data-tab="sentiment">
+                        <i class="fas fa-comment-dots"></i>
+                        Document Analysis
+                    </div>
+                    <div class="tab" data-tab="twitter">
+                        <i class="fab fa-twitter"></i>
+                        Twitter Analysis
+                    </div>
+                </div>
+
+                <!-- Sentiment Analysis Tab Content -->
+                <div class="tab-content active" id="sentiment-content">
+                    <div class="result-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-file-alt section-icon"></i>
+                            Document Sentiment
+                        </h3>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Text</th>
+                                        <th>Sentiment</th>
+                                        <th>Confidence</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="document-row">
+                                        <td>Document</td>
+                                        <td id="doc-sentiment">-</td>
+                                        <td id="doc-confidence">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-key section-icon"></i>
+                            Key Sentiment Drivers
+                        </h3>
+                        <div class="keywords" id="doc-keywords">Enter text and analyze to see keywords</div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-chart-bar section-icon"></i>
+                            Sentiment Distribution
+                        </h3>
+                        
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <div class="progress-label">
+                                    <i class="fa-solid fa-face-frown-open" style="color: var(--negative);"></i>
+                                    Negative
+                                </div>
+                                <div class="progress-value" id="negative-value">0%</div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill progress-fill-negative" id="negative-progress"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <div class="progress-label">
+                                    <i class="fa-solid fa-face-meh" style="color: var(--neutral);"></i>
+                                    Neutral
+                                </div>
+                                <div class="progress-value" id="neutral-value">0%</div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill progress-fill-neutral" id="neutral-progress"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-header">
+                                <div class="progress-label">
+                                    <i class="fa-solid fa-face-smile-beam" style="color: var(--positive);"></i>
+                                    Positive
+                                </div>
+                                <div class="progress-value" id="positive-value">0%</div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill progress-fill-positive" id="positive-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Twitter Analysis Tab Content -->
+                <div class="tab-content" id="twitter-content">
+                    <div class="result-section">
+                        <h3 class="section-title">
+                            <i class="fab fa-twitter section-icon"></i>
+                            Twitter Hashtag Analysis
+                        </h3>
+                        <div class="twitter-search">
+                            <input type="text" id="hashtag-input" class="twitter-input" placeholder="Enter hashtag (e.g. AI)">
+                            <button id="search-tweets-btn" class="btn btn-primary">
+                                <i class="fas fa-search btn-icon"></i>
+                                Search
+                            </button>
+                        </div>
+                        
+                        <!-- Loading State -->
+                        <div id="twitter-loading" class="loading-state" style="display: none;">
+                            <div class="loading-spinner"></div>
+                            <p>Fetching tweets...</p>
+                        </div>
+                        
+                        <!-- Error State -->
+                        <div id="twitter-error" class="error-state" style="display: none;">
+                            <i class="fas fa-exclamation-circle error-icon"></i>
+                            <p class="error-message"></p>
+                        </div>
+                        
+                        <!-- Twitter Stats -->
+                        <div id="twitter-summary" class="twitter-summary" style="display: none;">
+                            <h3 class="section-title">
+                                <i class="fas fa-chart-pie section-icon"></i>
+                                Sentiment Distribution
+                            </h3>
+                            <div class="stats-container">
+                                <div class="stat-card positive-card">
+                                    <div class="stat-icon"><i class="fa-solid fa-face-smile-beam"></i></div>
+                                    <div class="stat-label">Positive</div>
+                                    <div class="stat-value" id="twitter-positive-count">0</div>
+                                </div>
+                                <div class="stat-card neutral-card">
+                                    <div class="stat-icon"><i class="fa-solid fa-face-meh"></i></div>
+                                    <div class="stat-label">Neutral</div>
+                                    <div class="stat-value" id="twitter-neutral-count">0</div>
+                                </div>
+                                <div class="stat-card negative-card">
+                                    <div class="stat-icon"><i class="fa-solid fa-face-frown-open"></i></div>
+                                    <div class="stat-label">Negative</div>
+                                    <div class="stat-value" id="twitter-negative-count">0</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Word Cloud Placeholder -->
+                            <div class="wordcloud-container">
+                                <h3 class="section-title">
+                                    <i class="fas fa-cloud section-icon"></i>
+                                    Word Cloud
+                                </h3>
+                                <div class="wordcloud-image"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Twitter Results Table -->
+                        <div class="table-container" style="display: none;" id="twitter-results-table">
+                            <h3 class="section-title">
+                                <i class="fas fa-list section-icon"></i>
+                                Individual Tweets
+                            </h3>
+                            <div class="table-responsive">
+                                <table class="twitter-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Tweet</th>
+                                            <th>Sentiment</th>
+                                            <th>Confidence</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="twitter-results-body">
+                                        <!-- Populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        </div>
+        <footer>
+            <p>© 2025 Sentiment Analysis Tool</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script/script1.js') }}"></script>
+</body>
+</html>

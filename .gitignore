@@ -1,0 +1,5 @@
+# Ignore the large model file
+bert_best_sentiment_model.h5
+
+# Optional: You might want to ignore all large model files too
+*.h5
