@@ -1,5 +1,6 @@
 
 <!-- <img width="917" height="613" alt="image" src="https://github.com/user-attachments/assets/f9ff877b-5492-4440-b771-7be96070e16d" /> -->
+```mermaid
 graph TD
     subgraph "Flux Utilisateur"
         U[Utilisateur]
@@ -40,7 +41,7 @@ graph TD
     %% Flux 5: Serveur <-> Modèle (Prédiction)
     S -- "tokens [CLS]" --> M
     M -- Prédictions --> S
-
+```
 <h1>TweetSent-APP</h1>
 
 <p align="center">
