@@ -1,11 +1,11 @@
 
 <img width="917" height="613" alt="image" src="https://github.com/user-attachments/assets/f9ff877b-5492-4440-b771-7be96070e16d" />
 
-TweetSent-APP
+<h1>TweetSent-APP</h1>
 
 <p align="center">
 
-<img width="1300" height="492" alt="logo2" src="https://github.com/user-attachments/assets/0d37becf-9704-464d-99a6-3c01104496ef" />
+<img width="100" height="50" alt="logo2" src="https://github.com/user-attachments/assets/0d37becf-9704-464d-99a6-3c01104496ef" />
 
 </p>
 
