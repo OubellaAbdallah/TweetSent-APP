@@ -1,5 +1,45 @@
 
-<img width="917" height="613" alt="image" src="https://github.com/user-attachments/assets/f9ff877b-5492-4440-b771-7be96070e16d" />
+<!-- <img width="917" height="613" alt="image" src="https://github.com/user-attachments/assets/f9ff877b-5492-4440-b771-7be96070e16d" /> -->
+graph TD
+    subgraph "Flux Utilisateur"
+        U[Utilisateur]
+        App[Application Web]
+    end
+
+    subgraph "Système Central"
+        S[Serveur]
+    end
+
+    subgraph "Analyse & Modèle"
+        T[Traitement des tweets]
+        M(Modèle DistilBERT)
+    end
+
+    subgraph "Source de Données Externe"
+        API(Twikit API)
+        X[La plateforme X]
+    end
+
+    %% --- Définition des connexions ---
+
+    %% Flux 1: Utilisateur <-> App
+    U -- Requête --> App
+    App -- Résultats --> U
+
+    %% Flux 2: App <-> Serveur
+    App <--> S
+
+    %% Flux 3: Serveur <-> API (Récupération)
+    S <-->|"Tweets [JSON]"| API
+    API <-->|"Tweets [JSON]"| X
+
+    %% Flux 4: Serveur <-> Traitement (Prétraitement)
+    S -- "Tweets [JSON]" --> T
+    T -- "tokens [CLS]" --> S
+
+    %% Flux 5: Serveur <-> Modèle (Prédiction)
+    S -- "tokens [CLS]" --> M
+    M -- Prédictions --> S
 
 <h1>TweetSent-APP</h1>
 
