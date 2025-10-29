@@ -4,7 +4,9 @@
 TweetSent-APP
 
 <p align="center">
-<img src="https://www.google.com/search?q=https://placehold.co/600x300/6366f1/white%3Ftext%3DTweetSent-APP%26font%3Dinter" alt="TweetSent-APP Banner">
+
+<img width="1300" height="492" alt="logo2" src="https://github.com/user-attachments/assets/0d37becf-9704-464d-99a6-3c01104496ef" />
+
 </p>
 
 A web application for real-time sentiment analysis of tweets and text using a high-performance DistilBERT model.
