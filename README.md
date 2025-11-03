@@ -45,6 +45,11 @@ graph TD
 <h1>TweetSent-APP</h1>
 
 ![93917cf8a7e64d319a822fd21e68d1c7](https://github.com/user-attachments/assets/6a6a6f9b-678e-4df3-958a-017a07fa2695)
+![d981a3f628e34f7794c36d75c3135c28](https://github.com/user-attachments/assets/0999ff68-5838-467e-b93e-d00bf014cb81)
+<img width="776" height="648" alt="app9" src="https://github.com/user-attachments/assets/d869e58b-c916-475a-b4c5-2c6dcc1fea15" />
+<img width="1241" height="646" alt="app7" src="https://github.com/user-attachments/assets/0a074bfc-5544-468b-9b23-25ce2d921a60" />
+<img width="784" height="534" alt="app8" src="https://github.com/user-attachments/assets/c89555a3-0952-4f58-86d1-da7e6f4fab01" />
+
 
 <p align="center">
 
