@@ -44,6 +44,8 @@ graph TD
 ```
 <h1>TweetSent-APP</h1>
 
+![93917cf8a7e64d319a822fd21e68d1c7](https://github.com/user-attachments/assets/6a6a6f9b-678e-4df3-958a-017a07fa2695)
+
 <p align="center">
 
 <img width="100" height="50" alt="logo2" src="https://github.com/user-attachments/assets/0d37becf-9704-464d-99a6-3c01104496ef" />
