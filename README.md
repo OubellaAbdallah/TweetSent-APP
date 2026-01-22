@@ -109,9 +109,6 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # Install dependencies from your requirements file
 pip install -r requirements.txt
 
-
-(Note: requirements.txt should include tensorflow, transformers, flask, twikit, langdetect, nltk, matplotlib, wordcloud, etc., as per Annexe B).
-
 Environment Setup (Twikit Authentication):
 This project uses Twikit which requires an authenticated cookie file to function.
 
@@ -160,18 +157,6 @@ View the aggregated results (word cloud, sentiment counts) and the individual tw
 
 Contributions are welcome! If you'd like to help improve this project, please feel free to fork the repository and submit a pull request.
 
-Fork the Project
-
-Create your Feature Branch (git checkout -b feature/AmazingFeature)
-
-Commit your Changes (git commit -m 'Add some AmazingFeature')
-
-Push to the Branch (git push origin feature/AmazingFeature)
-
-Open a Pull Request
-
 📄 License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
-
-(Note: If you haven't added a LICENSE file, you should! You can easily add one on GitHub.)
